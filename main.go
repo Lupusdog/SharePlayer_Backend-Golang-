@@ -34,7 +34,7 @@ func main() {
 	router := gin.Default()
 
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"https://shareplayer-golang.herokuapp.com/"}
+	config.AllowAllOrigins = true
 	router.Use(cors.New(config))
 
 	router.GET("/share", func(c *gin.Context) {
