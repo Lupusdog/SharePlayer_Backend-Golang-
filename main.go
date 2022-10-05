@@ -14,7 +14,7 @@ func main() {
 	}
 
 	type Chat struct {
-		Comment string `json:"comment" binding:"requierd,min=1"`
+		Comment string `json:"comment" binding:"required"`
 	}
 
 	type MovieData struct {
@@ -23,12 +23,12 @@ func main() {
 	}
 
 	type UserName struct {
-		Name string `json:"name"`
+		Name string `json:"name" binding:"required"`
 	}
 
 	var Url string
 	var Time float64
-	var ChatLine []ChatList
+	var ChatLine []ChatList = []ChatList{{"Lupusdog", "Let's Chatting!!"}}
 
 	router := gin.Default()
 	router.GET("/share", func(c *gin.Context) {
@@ -74,6 +74,9 @@ func main() {
 
 		SendedChat := ChatList{Name, json.Comment}
 		ChatLine = append(ChatLine, SendedChat)
+		if len(ChatLine) > 15 {
+			ChatLine = ChatLine[1:]
+		}
 
 	})
 
