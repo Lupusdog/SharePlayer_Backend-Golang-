@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -31,6 +32,11 @@ func main() {
 	var ChatLine []ChatList = []ChatList{{"Lupusdog", "Let's Chatting!!"}}
 
 	router := gin.Default()
+
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"https://shareplayer-golang.herokuapp.com/"}
+	router.Use(cors.New(config))
+
 	router.GET("/share", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"url":  Url,
