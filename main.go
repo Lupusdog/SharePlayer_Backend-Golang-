@@ -64,6 +64,7 @@ func main() {
 	// config := cors.DefaultConfig()
 	// config.AllowAllOrigins = true
 	// router.Use(cors.New(config))
+	cookie := new(http.Cookie)
 
 
 	router.GET("/share", func(c *gin.Context) {
@@ -90,7 +91,6 @@ func main() {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
-		cookie := new(http.Cookie)
 		cookie.Value = json.Name
 
 		c.SetSameSite(http.SameSiteNoneMode)
