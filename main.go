@@ -38,8 +38,7 @@ func main() {
 
 	router.Use(cors.New(cors.Config{
 		AllowOrigins: []string{
-			// "https://share-player-frontend.vercel.app",
-			"http://localhost:3000",
+			"https://share-player-frontend.vercel.app",
 		},
 
 		AllowMethods: []string{
