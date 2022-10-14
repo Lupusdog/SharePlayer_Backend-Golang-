@@ -3,6 +3,8 @@ package main
 import (
 	"net/http"
 
+	"time"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
@@ -33,9 +35,34 @@ func main() {
 
 	router := gin.Default()
 
-	config := cors.DefaultConfig()
-	config.AllowAllOrigins = true
-	router.Use(cors.New(config))
+	router.Use(cors.New(cors.Config{
+		AllowOrigins: []string{
+			"https://share-player-frontend.vercel.app",
+			"http://localhost:3000",
+		},
+
+		AllowMethods: []string{
+			"POST",
+			"GET",
+			"OPTION",
+		},
+
+		AllowHeaders: []string{
+			"Access-Control-Allow-Credentials",
+			"Access-Control-Allow-Headers",
+			"Content-Type",
+			"Content-Length",
+			"Accept-Encoding",
+			"Authorization",
+		},
+
+		AllowCredentials: true,
+		
+		MaxAge: 24 * time.Hour,
+	}))
+	// config := cors.DefaultConfig()
+	// config.AllowAllOrigins = true
+	// router.Use(cors.New(config))
 
 	router.GET("/share", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
