@@ -38,7 +38,7 @@ func main() {
 
 	router.Use(cors.New(cors.Config{
 		AllowOrigins: []string{
-			"https://share-player-frontend.vercel.app",
+			// "https://share-player-frontend.vercel.app",
 			"http://localhost:3000",
 		},
 
@@ -64,7 +64,6 @@ func main() {
 	// config := cors.DefaultConfig()
 	// config.AllowAllOrigins = true
 	// router.Use(cors.New(config))
-	cookie := new(http.Cookie)
 
 
 	router.GET("/share", func(c *gin.Context) {
@@ -91,11 +90,7 @@ func main() {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
-		cookie.Value = json.Name
-
-		c.SetSameSite(http.SameSiteNoneMode)
-
-		c.SetCookie("user", cookie.Value, 7200, "/", "share-player-frontend.vercel.app", true, false)
+		c.SetCookie("user",json.Name,7200,"/","localhost",false,false)	
 
 	})
 
