@@ -91,7 +91,7 @@ func main() {
 			return
 		}
 		c.SetSameSite(http.SameSiteNoneMode)
-		c.SetCookie("user",json.Name,7200,"/","localhost",true,false)	
+		c.SetCookie("user",json.Name,7200,"/","shareplayer-backend.herokuapp.com",true,false)	
 
 	})
 
