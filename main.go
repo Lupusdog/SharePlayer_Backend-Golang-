@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
 	"time"
@@ -102,6 +103,7 @@ func main() {
 
 		Name, json_err := c.Cookie("user")
 		if json_err != nil {
+			fmt.Print(json_err)
 			Name = "Guest"
 		}
 
