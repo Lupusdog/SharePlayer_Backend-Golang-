@@ -61,7 +61,7 @@ func main() {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
-		c.SetCookie("user", json.Name, 7200, "/", "localhost", false, true)
+		c.SetCookie("user", json.Name, 7200, "/", "localhost", true, false)
 
 	})
 
