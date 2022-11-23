@@ -38,6 +38,8 @@ func main() {
 
 	router.Use(cors.New(cors.Config{
 		AllowOrigins: []string{
+			"https://bluearcfam.wiki",
+			"https://www.bluearcfam.wiki",
 			"https://share-player-frontend.vercel.app",
 		},
 
@@ -90,7 +92,7 @@ func main() {
 			return
 		}
 		c.SetSameSite(http.SameSiteNoneMode)
-		c.SetCookie("user",json.Name,7200,"/","share-player-frontend.vercel.app",true,true)	
+		c.SetCookie("user",json.Name,7200,"/","",true,true)	
 
 	})
 
