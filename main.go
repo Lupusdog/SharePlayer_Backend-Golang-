@@ -38,8 +38,6 @@ func main() {
 
 	router.Use(cors.New(cors.Config{
 		AllowOrigins: []string{
-			"https://bluearcfam.wiki",
-			"https://www.bluearcfam.wiki",
 			"https://share-player-frontend.vercel.app",
 		},
 
