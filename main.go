@@ -90,7 +90,7 @@ func main() {
 			return
 		}
 		c.SetSameSite(http.SameSiteNoneMode)
-		c.SetCookie("user",json.Name,7200,"/","share-player-frontend.vercel.app",true,false)	
+		c.SetCookie("user",json.Name,7200,"/","share-player-frontend.vercel.app",true,true)	
 
 	})
 
