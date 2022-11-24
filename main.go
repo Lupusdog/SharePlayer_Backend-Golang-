@@ -60,10 +60,6 @@ func main() {
 		
 		MaxAge: 24 * time.Hour,
 	}))
-	// config := cors.DefaultConfig()
-	// config.AllowAllOrigins = true
-	// router.Use(cors.New(config))
-
 
 	router.GET("/share", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
