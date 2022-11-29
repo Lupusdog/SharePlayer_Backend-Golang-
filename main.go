@@ -61,6 +61,7 @@ func main() {
 		MaxAge: 24 * time.Hour,
 	}))
 
+	//動画データの送受信
 	router.GET("/share", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"url":  Url,
@@ -79,6 +80,7 @@ func main() {
 		Time = json.Time
 	})
 
+	//ユーザー名をCookieに設定
 	router.POST("/user", func(c *gin.Context) {
 		var json UserName
 		if err := c.ShouldBindJSON(&json); err != nil {
@@ -90,6 +92,7 @@ func main() {
 
 	})
 
+	//チャットの送受信
 	router.POST("/chat", func(c *gin.Context) {
 		var json Chat
 
